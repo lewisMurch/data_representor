@@ -22,11 +22,16 @@ canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
 def generate():
     fig.clear()
-    if show_bar.get():
+    if show_bar.get() and show_pie.get():
         ax1 = fig.add_subplot(121)
         ax1.bar(range(len(data)), data)
-    if show_pie.get():
         ax2 = fig.add_subplot(122, aspect="equal")
+        ax2.pie(data)
+    elif show_bar.get():
+        ax1 = fig.add_subplot(111)
+        ax1.bar(range(len(data)), data)
+    elif show_pie.get():
+        ax2 = fig.add_subplot(111, aspect="equal")
         ax2.pie(data)
     canvas.draw()
 
