@@ -22,16 +22,12 @@ canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
 def generate():
     fig.clear()
-    ax = None
     if show_bar.get():
-        ax = fig.add_subplot(111)
-        ax.bar(range(len(data)), data)
+        ax1 = fig.add_subplot(121)
+        ax1.bar(range(len(data)), data)
     if show_pie.get():
-        if ax is None:
-            ax = fig.add_subplot(111, aspect="equal")
-        else:
-            ax.clear()
-        ax.pie(data)
+        ax2 = fig.add_subplot(122, aspect="equal")
+        ax2.pie(data)
     canvas.draw()
 
 generate_button = tk.Button(root, text="Generate", command=generate)
